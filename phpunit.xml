@@ -1,0 +1,16 @@
+<phpunit>
+    <filter>
+        <blacklist>
+            <directory>./.idea/</directory>
+            <directory>./tests/</directory>
+            <directory>./nbproject/</directory>
+            <file>./phpunit.xml</file>
+        </blacklist>
+    </filter>
+    <testsuites>
+        <testsuite name="DocBlockUtilTests">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
