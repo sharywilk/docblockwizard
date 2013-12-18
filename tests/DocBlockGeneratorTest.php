@@ -17,7 +17,6 @@ class DocBlockGeneratorTest extends PHPUnit_Framework_TestCase
     {
         parent::setUp();
         $this->testObject = new DocBlockGenerator();
-
     }
 
     public function tearDown()
@@ -29,12 +28,16 @@ class DocBlockGeneratorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider newDocblockTestDataProvider
      */
-    public function testGetNewDocblockForAnotations($inAnnotation, $inIntendation, $expOutput)
+    public function testGetNewDocblockForAnotations($inAnnotations, $inIntendation, $expOutput)
     {
-        $actOutput = $this->testObject->getNewDocblockForAnotations($inAnnotation, $inIntendation);
+        $actOutput = $this->testObject->getNewDocblockForAnotations($inAnnotations, $inIntendation);
         $this->assertEquals($expOutput, $actOutput);
     }
 
+    /**
+     * @TODO: provide real data sets, do not generate them using
+     * same logic as tested method as it's pointless
+     */
     public function newDocblockTestDataProvider()
     {
         $dataSets = [];
