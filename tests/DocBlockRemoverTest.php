@@ -41,9 +41,9 @@ class DocBlockRemoverTest extends PHPUnit_Framework_TestCase
     public function newDocblockTestDataProvider()
     {
         $dataSets = [];
-        $annotation = '@annotation Annotation';
-        $annotation1 = '@annotation Annotation1';
-        $annotation2 = '@annotation Annotation2';
+        $annotation = '@annotation';
+        $annotation1 = '@annotation1';
+        $annotation2 = '@annotation2';
 
         $docBlock = <<<EOF
 /**
@@ -57,6 +57,30 @@ EOF;
             $expDocBlock
         ];
         
+        $docBlock = <<<EOF
+/**
+ * @annotation Annotation
+ * @annotation1 Annotation1
+ */
+EOF;
+        $expDocBlock = <<<EOF
+/**
+ * @annotation1 Annotation1
+ */
+EOF;
+        $dataSets []= [
+            [$annotation],
+            $docBlock,
+            $expDocBlock
+        ];
+        
+        $expDocBlock = '';
+        $dataSets []= [
+            [$annotation, $annotation1],
+            $docBlock,
+            $expDocBlock
+        ];
+
         return $dataSets;
     }
 }
